@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	
+	<div>
+	<br>All the Routes are Imported  </br>
+	<br> Please Select the Destination</br>
+	 
+<form method=POST th:action="@{/shorteshPath}" th:object = "${planet}">
+<!-- form action="#" th:action="@{/shorteshPath}" th:object="${route}" method="post"> -->
+<!-- <form method=POST th:action="@{/shorteshPath/{planet}(planet=${planet.planetNode})}" -->
+ 
+  
+  
+   <select id="planet"  th:field="*{planetNode}">
+                        <option value=""> -- </option>
+                        <option th:each="planet : ${planets}"
+                           th:value="${planet.planetNode}"
+                           th:utext="${planet.planetName}"
+                           th:selected="${planet.planetNode}"/>
+    </select>
+  <br><br>
+	<input type="submit" value="Chart Route" />
+	
+		
+		</form>
+		
+		
+	<br></br>
+	<br>
+	<br>
+	</div>
+	
+	<table>		    
+		<thead>
+		<div> Below are the Uploaded Routes </div>
+			<tr>				        
+				<th>RouteId</th>  
+				<th>planetOrigin</th>  
+				<th>planetDestination</th>  
+				<th>distance</th>
+				<th>Delete</th>
+				<th>Edit</th>
+			</tr>
+			    
+		</thead>
+		    
+		<tbody>
+			             
+			<tr th:each="route : ${routes}">
+				            
+				<td><span th:text="${route.id}"> RouteId </span></td>             
+				<td><span th:text="${route.planetOrigin}"> planetOrigin
+				</span></td>
+				<td><span th:text="${route.planetDestination}">
+						planetDestination </span></td>             
+				<td><span th:text="${route.distance}"> distance </span></td>
+				<td><a th:href="@{/deleteRoute/{id}(id=${route.id})}">Delete</a></td>
+				<td><a th:href="@{/edit/{id}(id=${route.id})}">Edit</a></td>
+				        
+			</tr>
+			    
+		</tbody>
+	</table>
+</body>
+</html>

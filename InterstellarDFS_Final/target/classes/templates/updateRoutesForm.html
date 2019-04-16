@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8"/></head>
+<body>
+	<div>		
+
+		<form action="#" th:action="@{/updateRoute/{id}(id=${route.id})}"
+			th:object="${route}" method="post">
+			<label for="planetOrigin">PlanetOrigin</label> 
+			<input type="text" th:field="*{planetOrigin}" id="planetOrigin" placeholder="planetOrigin"> 
+			<label for="planetDestination">PlanetDestination</label> 
+			<input type="text" th:field="*{planetDestination}" id="planetDestination" placeholder="planetDestination">
+			<label for="distance">Distance</label> 
+			<input type="text" th:field="*{distance}" id="distance" placeholder="distance">  
+			<input type="submit" value="Update Routes">
+		</form>
+	</div>
+
+</body>
+</html>
